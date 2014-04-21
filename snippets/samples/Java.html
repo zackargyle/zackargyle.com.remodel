@@ -1,0 +1,32 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #0000aa">public</span> Pixel[] <span style="color: #00aa00">grayScale</span>(Pixel[] image) {
+  <span style="color: #0000aa">for</span> (Pixel p : image) {
+    <span style="color: #00aaaa">int</span> pixelAverage = (p.<span style="color: #1e90ff">getR</span>() + p.<span style="color: #1e90ff">getG</span>() + p.<span style="color: #1e90ff">getB</span>()) / <span style="color: #009999">3</span>;
+	p.<span style="color: #1e90ff">setR</span>(pixelAverage);
+	p.<span style="color: #1e90ff">setG</span>(pixelAverage);
+	p.<span style="color: #1e90ff">setB</span>(pixelAverage);
+  }
+  <span style="color: #0000aa">return</span> image;
+}
+	
+<span style="color: #0000aa">public</span> Pixel[] <span style="color: #00aa00">motionBlur</span>(Pixel[] image, Pixel[] image_copy, <span style="color: #00aaaa">int</span> n) {
+  <span style="color: #0000aa">for</span> (<span style="color: #00aaaa">int</span> i = <span style="color: #009999">0</span>; i &lt; image.<span style="color: #1e90ff">length</span>; i++) {
+	Pixel p = image[i];
+	<span style="color: #00aaaa">int</span> r = <span style="color: #009999">0</span>, g = <span style="color: #009999">0</span>, b = <span style="color: #009999">0</span>;
+	<span style="color: #00aaaa">int</span> end = n;
+	<span style="color: #00aaaa">int</span> num = n;
+	<span style="color: #0000aa">if</span> (end + i % width &gt;= width) {
+	  end = width - i % width - <span style="color: #009999">1</span>;
+	  num = width - i % width;
+	}
+	<span style="color: #0000aa">while</span> (--end &gt;= <span style="color: #009999">0</span>) {
+	  r += image_copy[i + end].<span style="color: #1e90ff">getR</span>();
+	  g += image_copy[i + end].<span style="color: #1e90ff">getG</span>();
+	  b += image_copy[i + end].<span style="color: #1e90ff">getB</span>();
+	}
+	p.<span style="color: #1e90ff">setR</span>(r/num);
+	p.<span style="color: #1e90ff">setG</span>(g/num);
+	p.<span style="color: #1e90ff">setB</span>(b/num);
+  }
+  <span style="color: #0000aa">return</span> image;
+}
+</pre></div>

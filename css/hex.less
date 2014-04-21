@@ -1,0 +1,39 @@
+/* STYLES */ 
+@import "mixins.less";
+@import "constants.less";
+ 
+.hex {
+  color: @defaultHexTextColor;
+  font-weight: lighter; 
+  float: left;
+
+  //.animation(spin 2s infinite linear);
+ 
+  &:hover	> .middle {
+		cursor: pointer;
+	}
+
+  .top {
+	    width: 0;
+	    border-bottom: @defaultBorderTop solid @defaultHexColor;
+	    border-left: @defaultHexSide solid transparent;
+	    border-right: @defaultHexSide solid transparent;
+	}
+	.middle {
+    width: @defaultHexWidth;
+    height: @defaultHexHeight;
+    background: @defaultHexColor;
+    div {
+      text-align: center;
+      font-size: 10px;
+      font-weight: lighter;
+      padding-top: 13%;
+    }
+	}
+	.bottom {
+    width: 0;
+    border-top: @defaultBorderTop solid @defaultHexColor;
+    border-left: @defaultHexSide solid transparent;
+    border-right: @defaultHexSide solid transparent;
+	}
+}

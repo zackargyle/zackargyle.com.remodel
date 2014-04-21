@@ -1,0 +1,30 @@
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #408080">/* Code for creating CSS hexagons */</span>
+<span style="color: red; font-weight: bold">@import "constants.less";</span>
+
+<span style="color: #008000; font-weight: bold">@defaultHexColor</span><span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">@lightBlack</span>;
+
+<span style="color: #008000; font-weight: bold">@defaultHexWidth</span><span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">45</span>;
+<span style="color: #008000; font-weight: bold">@defaultHexHeight</span><span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">ceil</span><span style="color: #666666">(</span><span style="color: #008000; font-weight: bold">@defaultHexWidth</span> <span style="color: #666666">/</span> <span style="color: #008000; font-weight: bold">sqrt</span><span style="color: #666666">(</span><span style="color: #008000; font-weight: bold">3</span><span style="color: #666666">))</span>;
+<span style="color: #008000; font-weight: bold">@defaultHexSide</span><span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">@defaultHexHeight</span> <span style="color: #008000; font-weight: bold">-</span> <span style="color: #008000; font-weight: bold">@defaultHexWidth</span> <span style="color: #666666">/</span> <span style="color: #008000; font-weight: bold">13</span>;
+<span style="color: #008000; font-weight: bold">@defaultBorderTop</span><span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">ceil</span><span style="color: #666666">(</span><span style="color: #008000; font-weight: bold">@defaultHexHeight</span> <span style="color: #666666">/</span> <span style="color: #008000; font-weight: bold">2</span><span style="color: #666666">)</span>;
+ 
+<span style="color: #0000FF; font-weight: bold">.hex</span> {
+    <span style="color: #0000FF; font-weight: bold">.top</span> {
+        <span style="color: #008000; font-weight: bold">width</span><span style="color: #666666">:</span> <span style="color: #666666">0</span>;
+        <span style="color: #008000; font-weight: bold">border-bottom</span><span style="color: #666666">:</span> <span style="color: #666666">@</span>defaultBorderTop <span style="color: #008000; font-weight: bold">solid</span> <span style="color: #666666">@</span>defaultHexColor;
+        <span style="color: #008000; font-weight: bold">border-left</span><span style="color: #666666">:</span> <span style="color: #666666">@</span>defaultHexSide <span style="color: #008000; font-weight: bold">solid</span> <span style="color: #008000; font-weight: bold">transparent</span>;
+        <span style="color: #008000; font-weight: bold">border-right</span><span style="color: #666666">:</span> <span style="color: #666666">@</span>defaultHexSide <span style="color: #008000; font-weight: bold">solid</span> <span style="color: #008000; font-weight: bold">transparent</span>;
+    }
+    <span style="color: #0000FF; font-weight: bold">.middle</span> {
+        <span style="color: #008000; font-weight: bold">width</span><span style="color: #666666">:</span> <span style="color: #666666">@</span>defaultHexWidth;
+        <span style="color: #008000; font-weight: bold">height</span><span style="color: #666666">:</span> <span style="color: #666666">@</span>defaultHexHeight;
+        <span style="color: #008000; font-weight: bold">background</span><span style="color: #666666">:</span> <span style="color: #666666">@</span>defaultHexColor;
+    }
+    <span style="color: #0000FF; font-weight: bold">.bottom</span> {
+        <span style="color: #008000; font-weight: bold">width</span><span style="color: #666666">:</span> <span style="color: #666666">0</span>;
+        <span style="color: #008000; font-weight: bold">border-top</span><span style="color: #666666">:</span> <span style="color: #666666">@</span>defaultBorderTop <span style="color: #008000; font-weight: bold">solid</span> <span style="color: #666666">@</span>defaultHexColor;
+        <span style="color: #008000; font-weight: bold">border-left</span><span style="color: #666666">:</span> <span style="color: #666666">@</span>defaultHexSide <span style="color: #008000; font-weight: bold">solid</span> <span style="color: #008000; font-weight: bold">transparent</span>;
+        <span style="color: #008000; font-weight: bold">border-right</span><span style="color: #666666">:</span> <span style="color: #666666">@</span>defaultHexSide <span style="color: #008000; font-weight: bold">solid</span> <span style="color: #008000; font-weight: bold">transparent</span>;
+    }
+}
+</pre></div>

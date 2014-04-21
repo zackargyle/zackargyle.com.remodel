@@ -1,0 +1,24 @@
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #BA2121; font-style: italic">&#39;&#39;&#39; Code for starting a lasertag game &#39;&#39;&#39;</span>
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">GameStart</span>(APIView):
+    permission_classes <span style="color: #666666">=</span> (isAuthenticated,)
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">post</span>(<span style="color: #008000">self</span>, request):
+        data <span style="color: #666666">=</span> request<span style="color: #666666">.</span>DATA
+        players <span style="color: #666666">=</span> data[<span style="color: #BA2121">&quot;players&quot;</span>]
+        teams <span style="color: #666666">=</span> data[<span style="color: #BA2121">&quot;teams&quot;</span>]
+
+        game <span style="color: #666666">=</span> Game(mode<span style="color: #666666">=</span>data[<span style="color: #BA2121">&quot;mode&quot;</span>], state<span style="color: #666666">=</span><span style="color: #BA2121">&quot;PLAYING&quot;</span>, time_limit<span style="color: #666666">=</span>data[<span style="color: #BA2121">&quot;time_limit&quot;</span>], score_limit<span style="color: #666666">=</span>data[<span style="color: #BA2121">&quot;score_limit&quot;</span>])
+        game<span style="color: #666666">.</span>save()
+
+        <span style="color: #008000; font-weight: bold">if</span> data[<span style="color: #BA2121">&quot;mode&quot;</span>] <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;TEAMS&quot;</span>:
+            setupTeamsAndPlayers(teams, players, game)
+        <span style="color: #008000; font-weight: bold">else</span>:
+            setupPlayersOnly(players, game)
+
+        player <span style="color: #666666">=</span> Player<span style="color: #666666">.</span>objects<span style="color: #666666">.</span>get(username<span style="color: #666666">=</span>data[<span style="color: #BA2121">&quot;username&quot;</span>])
+        instance <span style="color: #666666">=</span> PlayerInstance<span style="color: #666666">.</span>objects<span style="color: #666666">.</span>get(game<span style="color: #666666">=</span>game,player<span style="color: #666666">=</span>player)
+
+        team <span style="color: #666666">=</span> instance<span style="color: #666666">.</span>team<span style="color: #666666">.</span>id <span style="color: #008000; font-weight: bold">if</span> instance<span style="color: #666666">.</span>team <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000">None</span>
+
+        <span style="color: #008000; font-weight: bold">return</span> Response({<span style="color: #BA2121">&#39;game&#39;</span>: game<span style="color: #666666">.</span>id, <span style="color: #BA2121">&#39;mode&#39;</span>: game<span style="color: #666666">.</span>mode, <span style="color: #BA2121">&#39;player&#39;</span>: instance<span style="color: #666666">.</span>id, <span style="color: #BA2121">&#39;team&#39;</span>: team})
+</pre></div>

@@ -1,0 +1,145 @@
+
+<html>
+<head>
+  <title>Hey, I'm Zack</title>
+  <meta name="viewport" content="width=device-width, height=device-height" >
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans:100,400' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/style.css"/>
+
+</head>
+<body id="welcome">
+
+  <div class="my-nav">
+    <div class="container" style="width:100%">
+      <a class="brand" href="https://www.facebook.com/zackargyle"><img src="images/navbar/facebook.png"></a>
+      <a class="brand" href="https://github.com/zackargyle"><img src="images/navbar/git-hub.png"></a>
+      <a class="brand" href="http://www.linkedin.com/in/zackargyle"><img src="images/navbar/linked-in.png"></a>
+      <a class="brand" href="http://stackoverflow.com/users/2642809/zack-argyle"><img src="images/navbar/stack-overflow.png"></a>
+      <a class="brand" href="http://jsfiddle.net/user/zargyle/fiddles/"><img src="images/navbar/jsfiddle.png"></a>
+
+      <div id="nav-menu">
+        <div onclick="App.transition(App.current, 'about')">Home</div>
+        <div onclick="App.transition(App.current, 'stats')">Stats</div>
+        <div class="hideSmall" onclick="App.transition(App.current, 'resume')">Resume</div>
+        <div onclick="App.transition(App.current, 'samples')">Samples</div>
+        <div class="hideSmall" onclick="App.transition(App.current, 'game')">Game</div>
+        <div onclick="App.transition(App.current, App.last)">Back</div>
+      </div>
+      <div id="skip" onclick="App.skip()">Skip</div>
+    </div>
+  </div>
+
+  <div id="landing"></div>
+  <div id="landing-cover">
+
+    <div id="slide0">
+      <header> I originally built this site with AngularJS and JQuery. They just make things so easy. </header>
+    </div>
+
+    <div id="slide1">
+      <header> But I love javascript, so I decided to rebuild it without libraries, and without frameworks. </header>
+    </div>
+
+    <div id="slide2">
+      <header> Hope you like it. </header>
+    </div>
+  </div>
+
+  <div id="main">
+    <div id="stats">
+      <div id="statistics-container">
+        <table id="statistics">
+          <thead>
+            <tr>
+              <th colspan="2">API Statistics<img src="images/stats.png" width="10%" style="opacity: .7; margin: 0 0 0 4%"></th>
+            </tr>
+          </thead>
+          <tr>
+            <td><a href="http://stackoverflow.com/users/2642809/zack-argyle">StackOverflow</a></td>
+            <td id="stackRep">1805 reputation</td>
+          </tr>
+          <tr>
+            <td><a href="https://github.com/zackargyle">Github</a></td>
+            <td id="gitStars">--- stargazers</td>
+          </tr>
+          <tr>
+            <td><a href="http://jsfiddle.net/user/zargyle/fiddles/">JSFiddle</a></td>
+            <td id="jsfiddle">--- fiddles</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- About Me -->
+    <div id="about">
+      <div>
+        <img class="img-circle" src="images/verisage.png">
+        <header>Two Years Experience</header>
+        <p>Over the past two years I have spent time working in a multitude of languages like C, C++, Java, Python, <span>Javascript</span>, HTML, and CSS. I have experience working in frameworks like <span>AngularJS</span>, jQuery, Django, and native Android development. I'm continuously trying out new frameworks and coding styles.</p>
+      </div>
+      <div>
+        <img class="img-circle" src="images/sony.png">
+        <header>Hardware and Software</header>
+        <p>I graduated in <span>Electrical Engineering</span> with an emphasis in <span>Computer Systems</span>. I have worked as an <span>Engineering Intern</span> with Harman Signal Processing developing professional audio equipment, as a <span>Software Consultant</span> for Verisage (custom web and mobile applications), and currently as a <span>Software Engineer</span> for Sony Network Entertainment. Software won my heart in the end.</p>
+      </div>
+      <div>
+        <img class="img-circle" src="images/byu.png">
+        <header>Business Meet Tech</header>
+        <p>I serve as a <span>Mentor</span> for Provo's Coding Campus, and am the <span>Founder</span> and <span>President</span> of the Brigham Young University <span>Business-Minded Engineers</span> club, where we learn from successful business professionals that graduated from a technical field. I have been in leadership positions my whole life, and hope to continue in the future.</p>
+      </div>
+    </div>
+
+    <div class="hideSmall" id="resume">
+      <embed src="resume.pdf" width="830" height="550">
+    </div>
+
+    <div id="samples">
+      <h1>Code Samples</h1>
+      <div id="code-paragraph">Through work and school I've been able to work with a lot of languages. I have experience in C, C++, Java, JavaScript, Python, AngularJS, JQuery, Django, HTML5, CSS3, LESS, NodeJS, Express, MongoDB, VHDL, Android, Bootstrap, JSON, XML, REST, AJAX, SQL, MVC, OOP, APIs, Git, and agile development (SCRUM). Check out some samples. Click an image on the nav bar to see more code samples.</div>
+      <div id="code-paragraph-click">Click on a language to see a sample.</div>
+      <div>
+        <img class="code-snippet" src="snippets/Angular.png" onclick="App.openModal('Angular')" >
+        <img class="code-snippet" src="snippets/Javascript.png" onclick="App.openModal('Javascript')" >
+        <img class="code-snippet" src="snippets/jQuery.png" onclick="App.openModal('jQuery')" >
+      </div>
+      <div>
+        <img class="code-snippet" src="snippets/Java.png" onclick="App.openModal('Java')" >
+        <img class="code-snippet" src="snippets/Less.png" onclick="App.openModal('Less')" >
+        <img class="code-snippet" src="snippets/Python.png" onclick="App.openModal('Python')" >
+      </div>
+    </div>
+
+    <div id="game" >
+      <header id="game-header">Collect all 5 coins!</header>
+      <canvas id="game-canvas"></canvas>
+      <div class="collision-class game-block" id="game-block0"></div>
+      <div class="collision-class game-block"id="game-block1"></div>
+      <div class="collision-class game-block"id="game-block2"></div>
+      <div class="collision-class game-block" id="game-block3" move></div>
+      <div class="collision-class coin" id="coin1" coin></div>
+      <div class="collision-class coin" id="coin2" coin></div>
+      <div class="collision-class coin" id="coin3" coin></div>
+      <div class="collision-class coin" id="coin4" coin></div>
+      <div class="collision-class coin" id="coin5" coin></div>
+      <div class="collision-class" id="game-cliff-top"></div>
+      <div class="collision-class" id="game-cliff-bottom"></div>
+      <div class="secret" id="game-cliff"></div>
+      <div id="game-start" onclick="App.startGame()">Start Game</div>
+    </div>
+
+  </div>
+
+  <div id="modal-background" onclick="App.closeModal()">
+    <div id="modal-body"></div>
+  </div>
+
+  <script src="js/platformer.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/fade.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+
+</html>

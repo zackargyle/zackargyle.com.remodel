@@ -1,0 +1,36 @@
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #408080">// Directive for persisting form data in local storage until submission </span>
+
+  .directive(<span style="color: #BA2121">&#39;ngPersist&#39;</span>, <span style="color: #008000; font-weight: bold">function</span>() {
+    <span style="color: #008000; font-weight: bold">return</span> {
+        restrict<span style="color: #666666">:</span> <span style="color: #BA2121">&#39;A&#39;</span>,
+        scope<span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">false</span>,
+        link<span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">function</span>(scope,elem,attrs) {
+            <span style="color: #008000; font-weight: bold">var</span> formName <span style="color: #666666">=</span> elem[<span style="color: #666666">0</span>].name;
+
+            <span style="color: #008000; font-weight: bold">if</span> (formName) {
+                <span style="color: #008000; font-weight: bold">var</span> inputs <span style="color: #666666">=</span> elem.find(<span style="color: #BA2121">&quot;input&quot;</span>),
+                    data <span style="color: #666666">=</span> JSON.parse(localStorage.getItem(formName) <span style="color: #666666">||</span> <span style="color: #BA2121">&quot;{}&quot;</span>);
+
+                <span style="color: #408080; font-style: italic">// For each input that should be persisted</span>
+                angular.forEach(inputs, <span style="color: #008000; font-weight: bold">function</span>(input) {
+                    <span style="color: #008000; font-weight: bold">if</span> (isPersisted(input)) {
+                        <span style="color: #008000; font-weight: bold">var</span> attribute <span style="color: #666666">=</span> input.getAttribute(<span style="color: #BA2121">&#39;ng-model&#39;</span>);
+
+                        scope[attribute] <span style="color: #666666">=</span> data[attribute];
+
+                        input.onchange <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">function</span>() {
+                            data[attribute] <span style="color: #666666">=</span> input.value;
+                            localStorage.setItem(formName, JSON.stringify(data));
+                        };
+                    }
+                });
+
+                <span style="color: #408080; font-style: italic">// Clear stored item on submit</span>
+                elem.bind(<span style="color: #BA2121">&#39;submit&#39;</span>, <span style="color: #008000; font-weight: bold">function</span>() {
+                    localStorage.removeItem(formName);
+                });
+            } <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">throw</span> <span style="color: #BA2121">&quot;Form must include name attribute to use ng-persist. &quot;</span>;
+        }
+    }
+});
+</pre></div>

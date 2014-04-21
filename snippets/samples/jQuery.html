@@ -1,0 +1,27 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #aaaaaa; font-style: italic">// Magic</span>
+<span style="color: #0000aa">var</span> mousedown = <span style="color: #0000aa">false</span>; 
+
+<span style="color: #aaaaaa; font-style: italic">// Randomly assign a background color to body</span>
+$(<span style="color: #aa5500">&quot;#easterEgg&quot;</span>).mousedown(<span style="color: #0000aa">function</span>() {
+  mousedown = <span style="color: #0000aa">true</span>;
+
+  $(<span style="color: #00aaaa">document</span>).keypress(<span style="color: #0000aa">function</span>(e) {
+    <span style="color: #0000aa">if</span> (mousedown &amp;&amp; e.which === ENTER) { 
+      <span style="color: #0000aa">var</span> rgb = [];
+
+      <span style="color: #aaaaaa; font-style: italic">// Get three random numbers</span>
+      <span style="color: #0000aa">for</span> (<span style="color: #0000aa">var</span> i = <span style="color: #009999">0</span>; i &lt; <span style="color: #009999">3</span>; i++) {
+        rgb[i] = <span style="color: #00aaaa">Math</span>.floor((<span style="color: #00aaaa">Math</span>.random() * <span style="color: #009999">255</span>) + <span style="color: #009999">1</span>);
+      }
+
+      $(<span style="color: #aa5500">&#39;body&#39;</span>).css(<span style="color: #aa5500">&#39;background-color&#39;</span>,<span style="color: #aa5500">&#39;rgb(&#39;</span>+rgb[<span style="color: #009999">0</span>]+<span style="color: #aa5500">&#39;,&#39;</span>+rgb[<span style="color: #009999">1</span>]+<span style="color: #aa5500">&#39;,&#39;</span>+rgb[<span style="color: #009999">2</span>]+<span style="color: #aa5500">&#39;)&#39;</span>);
+    }
+  });
+})
+.mouseup(<span style="color: #0000aa">function</span>() {
+    mousedown = <span style="color: #0000aa">false</span>;
+})
+.mouseout(<span style="color: #0000aa">function</span>() {
+    mousedown = <span style="color: #0000aa">false</span>;
+});
+</pre></div>
