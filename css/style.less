@@ -7,6 +7,10 @@
     font-family: 'Alegreya Sans', sans-serif;
 }
 
+a {
+    border: none;
+}
+
 body, {
     min-width: @defaultMinWidth;
     background-color: black;
@@ -22,7 +26,6 @@ body, {
     top: 0;
     background-color: black;
     min-width: @defaultMinWidth;
-    clear: both;
 
     .brand {
         margin-left: 10px;
@@ -45,23 +48,18 @@ body, {
             }
         }
     }
-
-}
-
-#skip, #back-button {
-    background-color: @black;
-    color: white;
-    float: right;
-    font-size: 1.2rem;
-    margin: 17px 4%;
-    &:hover {
-        cursor: pointer;
-        color: @defaultHover;
+    #skip {
+        margin: 17px 0%;
+        float: right;
+        clear: both;
+        width: 100px;
+        color: white;
+        font-size: 1rem;
+        &:hover {
+            cursor: pointer;
+            color: @defaultHover;
+        }
     }
-}
-
-#back-button {
-    display: none;
 }
 
 #landing, #landing-cover {
@@ -94,7 +92,6 @@ body, {
     display: none;
     opacity: 0;
     header {
-        position: absolute;
         color: white;
         margin-top: 170px;
         width: 60%;

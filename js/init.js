@@ -4,7 +4,7 @@ document.addEventListener( "DOMContentLoaded", function(){
 	// Start Initial slide transitions
 	App.slideTimeout = setTimeout(function() {
 		App.slide(false);
-	}, 3500);
+	}, 3000);
 
 	// Update statistics
 
